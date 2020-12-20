@@ -1,0 +1,15 @@
+{
+  "name": "bcc_development_applications",
+  "version": "0.1.0",
+  "description": "",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "node scraper.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "sqlite3": "^5.0.0"
+  }
+}
