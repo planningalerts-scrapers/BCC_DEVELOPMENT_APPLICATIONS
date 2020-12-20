@@ -124,7 +124,7 @@ function parseAddressDesc(desc) {
   }
 }
 
-function formatDate(date=null) {
+function formatCurrentDate(date=null) {
   var d = new Date(date),
     month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),
@@ -152,7 +152,6 @@ async function main() {
   const database = await initializeDatabase();
   // Not sure why, but API returns multiple entries with almost identical information for the same application just different land_no, UI seems to show only one as well, so we are simply dedupe them there
   const allApplications = deduplicate(await loadAllData() || []);
-let i = 0;
   const promises = allApplications.map(async application => {
     const details = application.properties || {};
     const { address = "", description = ""  } = parseAddressDesc(details.description);
@@ -162,10 +161,9 @@ let i = 0;
       address,
       description,
       informationUrl: `${BCC_INFORMATION_URL}${applicationNumber}`,
-      scrapeDate: formatDate(),
+      scrapeDate: formatCurrentDate(),
       receivedDate: details.date_received,
     };
-    i++;
     return insertRow(database, developmentApplication);
   });
 
