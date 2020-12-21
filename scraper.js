@@ -36,7 +36,7 @@ async function insertRow(database, developmentApplication) {
         reject(error);
       }
       else {
-        console.log(`    Saved application \"${developmentApplication.applicationNumber}\" with address \"${developmentApplication.address}\", description \"${developmentApplication.description}\" and received date \"${developmentApplication.receivedDate}\" to the database.`);
+        console.log(`    Saved application \"${developmentApplication.applicationNumber}\" with address \"${developmentApplication.address}\", description \"${developmentApplication.description}\" and received date \"${developmentApplication.scrapeDate}\" to the database.`);
         sqlStatement.finalize(); // releases any locks
         resolve(row);
       }
@@ -124,8 +124,8 @@ function parseAddressDesc(desc) {
   }
 }
 
-function formatCurrentDate(date=null) {
-  var d = new Date(date),
+function formatCurrentDate() {
+  var d = new Date(),
     month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),
     year = d.getFullYear();
