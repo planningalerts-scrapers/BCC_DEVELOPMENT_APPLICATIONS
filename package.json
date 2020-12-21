@@ -2,6 +2,9 @@
   "name": "bcc_development_applications",
   "version": "0.1.0",
   "description": "",
+  "engines": {
+    "node": "10.14.1"
+  },
   "main": "scraper.js",
   "scripts": {
     "start": "node scraper.js"
